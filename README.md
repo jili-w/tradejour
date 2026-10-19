@@ -1,0 +1,1 @@
+This repo was made because I felt my familiarity with Python was lacking as I haven't needed to use it in a while due to my Uni Coursemap. I decided to use this as a way to unrust and at the same time learn about how to make an OrderBook
