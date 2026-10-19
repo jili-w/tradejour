@@ -1,0 +1,9 @@
+1.Given prices = [101, 99, 105, 98, 110, 97], print the daily changes ([-2, 6, -7, 12, -1]). Hint: slicing plus zip.
+
+2.Given a list of trades [("AAPL", 10), ("MSFT", 5), ("AAPL", -3)], build a dict of net position per ticker.
+
+3.From orders = [3, 7, 3, 9, 7, 1], print the unique order IDs in sorted order.
+
+4.Swap two variables in one line without a temp variable.
+
+5.Print a small table of the dict from exercise 2, with tickers left-aligned and positions right-aligned.
