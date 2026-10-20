@@ -4,7 +4,7 @@ print(book.get("NVDA", "not found"))
 for ticker, px in book.items():
     print(f"{ticker:<6}{px:>8.2f}")
 
-seen =(1,2,3)
+seen = set(1,2,3)
 seen.add(2)
 print (seen,3 in seen)
 

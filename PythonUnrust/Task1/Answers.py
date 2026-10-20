@@ -19,4 +19,16 @@ position = {}
 for tick, qty in trades:
     position[tick] = position.get(tick, 0) + qty
 
+# 3.From orders = [3, 7, 3, 9, 7, 1], print the unique order IDs in sorted order.
+orders = set([3, 7, 3, 9, 7, 1])
 
+print(sorted(set(orders)))
+
+#4.Swap two variables in one line without a temp variable.
+
+var1 ,var2 = var2, var1
+
+#5.Print a small table of the dict from exercise 2, with tickers left-aligned and positions right-aligned.
+
+for tickers, qty in position.items():
+    print(f"{tickers:<6} {qty:>8}")
