@@ -26,7 +26,7 @@ print(sorted(set(orders)))
 
 #4.Swap two variables in one line without a temp variable.
 
-var1 ,var2 = var2, var1
+# var1 ,var2 = var2, var1
 
 #5.Print a small table of the dict from exercise 2, with tickers left-aligned and positions right-aligned.
 

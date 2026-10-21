@@ -1,0 +1,16 @@
+1. Rewrite your Day 2 positions loop with defaultdict. It should shrink to a two-line loop with no .get().
+
+
+2. Simulate a price level: create a deque, append orders ("o1", 10), ("o2", 5), ("o3", 8) as (id, qty) in arrival order, 
+then serve them first come, first served by popping and printing each until the deque is empty. (Hint: while q: loops as long as the deque isn’t empty.)
+
+
+3. Given trades = ["AAPL", "MSFT", "AAPL", "TSLA", "AAPL", "MSFT"] (one ticker per trade), use Counter to find the most traded ticker.
+
+
+4. Build a mini book side: a defaultdict(deque) where each key is a price and each value is a queue of orders. Add ("o1", 10) and ("o2", 5) at price 100, 
+and ("o3", 7) at price 101. Then print the total quantity resting at each price. (Hint: a sum(...) over a comprehension.)
+
+
+5. Stretch: keep a deque of the last 3 prices only as you loop through prices. Look up the maxlen argument of deque, 
+then print the deque after each price.

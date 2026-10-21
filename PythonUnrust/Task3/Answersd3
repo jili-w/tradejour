@@ -1,0 +1,39 @@
+from collections import defaultdict, deque, Counter
+# 1. Rewrite your Day 2 positions loop with defaultdict. It should shrink to a two-line loop with no .get().
+trades = [("AAPL", 10), ("MSFT", 5), ("AAPL", -3)]
+# position = {}
+
+# for tick, qty in trades:
+#     position[tick] = position.get(tick, 0) + qty
+position = defaultdict(list)
+for tick, qty in trades : position[tick] += qty
+
+#2.  Simulate a price level: create a deque, append orders ("o1", 10), ("o2", 5), ("o3", 8) as (id, qty) in arrival order, 
+# then serve them first come, first served by popping and printing each until the deque is empty. (Hint: while q: loops as long as the deque isn’t empty.)
+
+q = deque()
+orders = [("o1", 10), ("o2", 5), ("o3", 8)]
+for order in orders:
+    q.append(order)
+
+while q:
+    order_id,qty = q.popleft() 
+    print(f"Filled {order_id} for {qty}")
+
+# 3. Given trades = ["AAPL", "MSFT", "AAPL", "TSLA", "AAPL", "MSFT"] (one ticker per trade), use Counter to find the most traded ticker.
+trade_counts = Counter(["AAPL", "MSFT", "AAPL", "TSLA", "AAPL", "MSFT"])
+ticker, count = trade_counts.most_common(1)[0]
+
+#4. Build a mini book side: a defaultdict(deque) where each key is a price and each value is a queue of orders. Add ("o1", 10) and ("o2", 5) at price 100, 
+#and ("o3", 7) at price 101. Then print the total quantity resting at each price. (Hint: a sum(...) over a comprehension.)
+
+book_side = defaultdict(deque)
+book_side[100].append(("o1", 10))
+book_side[100].append(("o2", 5))
+book_side[101].append(("o3", 7))
+for prices,orders in book_side.items():
+    total = sum(qty for t,qty in orders)
+    print(f"{prices} : {total}")
+
+#5. Stretch: keep a deque of the last 3 prices only as you loop through prices. Look up the maxlen argument of deque, 
+#then print the deque after each price.
