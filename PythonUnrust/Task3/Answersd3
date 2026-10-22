@@ -37,3 +37,8 @@ for prices,orders in book_side.items():
 
 #5. Stretch: keep a deque of the last 3 prices only as you loop through prices. Look up the maxlen argument of deque, 
 #then print the deque after each price.
+last3 = deque(maxlen =3)
+for p in prices:
+    last3.append(p)
+    print(last3)
+
