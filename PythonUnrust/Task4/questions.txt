@@ -1,0 +1,6 @@
+1: Push the bid prices [98, 100, 97, 100, 99] onto a max-heap (negated), then pop them all, printing best to worst.
+
+2: Kth largest: write kth_largest(nums, k) using a heap of size k. Don’t sort the whole list. (Hint: a min-heap of the k largest values seen so far has the kth largest at its top.)
+3: Merge k sorted lists: given [[1, 4, 7], [2, 5, 8], [3, 6, 9]], produce one sorted list using a heap of (value, list_index, element_index) tuples. (A classic problem from your DSA days; heapq.merge exists, but write it yourself.)
+4: Keep a sorted list of ask price levels with bisect.insort as [101, 99, 105, 100] arrive. After each insert, print the best ask and the top 2 levels.
+5: Stretch: a price can appear twice in exercise 1’s heap. Push (-price, order_id) tuples instead, so equal prices are tie-broken by arr
