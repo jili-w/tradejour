@@ -10,8 +10,8 @@ def zero_triples(qtys: list[int]) -> list[list[int]]:
             continue
         left, right = i + 1, len(qtys) - 1 # left = 1 right= 5
         while left < right :  
-            total = qtys[i] + qtys[left] + qtys[right] #-4 - 1 +2 = -3
-            if total < 0:
+            total = qtys[i] + qtys[left] + qtys[right] # -4 - 1 + 2 = -3
+            if total < 0: 
                 left += 1
             elif total > 0:
                 right -= 1
