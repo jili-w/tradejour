@@ -1,0 +1,12 @@
+Rewrite yesterday’s Order as a dataclass with a Side enum, and keep your fill(), is_filled() and remaining_value() methods. Compare the line count with yesterday’s version.
+Equality changed. Yesterday two orders with the same order_id were ==. What does the dataclass’s == compare? Test it with two orders that share an id but have different prices. Which behaviour does an order book want? (Write a comment.)
+
+
+Add an OrderType enum with LIMIT and MARKET, and add it to Order as a field with a default of OrderType.LIMIT.
+
+
+Make a frozen Trade dataclass: buy_id, sell_id, price, qty. Try changing trade.qty and read the error. Then put two trades in a set. Why does that work for a frozen dataclass but not for a normal one?
+
+Move your fill() safety checks into the right places: __post_init__ should validate a new order (positive price and qty), while fill() still guards fills.
+The trap: in a dataclass, try fills: list[int] = []. Read the error, explain in a comment why Python forbids it, and fix it with field(default_factory=list).
+Check Side.BUY == "buy". Predict the result first, then run it. What does this mean for code that reads sides from a CSV file in Phase 3?
