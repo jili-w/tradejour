@@ -1,0 +1,19 @@
+Type out the Order class and create three orders. Print them to check that __repr__ works.
+
+
+
+
+Add __eq__ (same order_id means equal) and test it: two separate Order(1, ...) objects should be ==, and an Order(2, ...) shouldn’t be.
+Add a remaining_value() method that returns price * qty.
+Make fill() safe: if amount is more than the remaining qty, raise ValueError("overfill"). Test it with a try / except ValueError block.
+Add __lt__ so that a list of ask orders sorts by price, then order_id: price-time priority again, now built into the class. Then sorted(asks) and heapq.heappush will just work with Order objects. (Hint: tuples compare item by item, so __lt__ can compare two tuples.)
+
+Think about this: a bid order needs the opposite price ordering, where higher is better.
+ Does one __lt__ work for both sides? Write down your answer in a comment. 
+ There’s no code for this one; it’s the design problem you’ll solve properly in Week 4.
+
+ ans: it could work for both sides just not implicitly, since we can use the principle used in week one ie max heap by negating the value
+
+
+ real ans: real orderbooks dont use __lt__ at all since the return is never really used, Order stays as plain data and you build 2 sides of the book
+ bids and asks one negates the value and one keeps as is, then use a deque to have both price and time priority
