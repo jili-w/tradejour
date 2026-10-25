@@ -1,0 +1,22 @@
+Running mypy on existing code. Every file only sees what it defines or imports. Shared classes go in their own module (models.py) and get imported. 
+mypy also reads the saved file, so save before you check.
+
+Return types. Returning str(total) from a function marked -> int crashes at runtime only when the bad value is used. 
+mypy flags it at the return line straight away. You also saw that .append() returns None.
+
+
+The None trap (the most important one). A function that can fail to find something returns Order | None. 
+mypy then refuses to let you use .qty until you’ve handled the None case with if order is None:. 
+After that check, it narrows the type to Order. This is exactly what a cancel for an unknown order id needs. 
+You also saw that a wrong default like .get(oid, 0) sneaks in a different type.
+
+
+Strict mode. --strict requires every function to be fully annotated, including -> None on methods like __post_init__ that return nothing.
+
+Strict equality. --strict caught self.order_type != "market" as a comparison that can never be true, which was yesterday’s enum-vs-string bug, found without running anything.
+
+Annotating containers. An empty [] gives mypy no clue what goes in it, so you annotate it: heap: list[tuple[int, int, int]] = []. 
+Turning the code into a typed function with asserts also surfaced a real edge-case bug, an empty inner list.
+
+NewType. OrderId and Price are both int at runtime, but mypy treats them as different types, so passing a price where an id is expected gets caught. 
+The trade-off is extra wrapping and arithmetic falling back to plain int, so it’s best for identifiers.

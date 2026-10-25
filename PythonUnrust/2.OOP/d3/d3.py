@@ -39,6 +39,8 @@ def merge_k_sorted(lists: list[list[int]]) -> list[int]:
     return result
 
 
+OrderId = NewType("OrderId", int)
+
 assert merge_k_sorted([[1, 4, 7], [2, 5, 8], [3, 6, 9]]) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
 assert merge_k_sorted([[1, 2], [], [0, 5]]) == [0, 1, 2, 5]
 assert merge_k_sorted([]) == []

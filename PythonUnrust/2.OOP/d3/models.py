@@ -1,5 +1,7 @@
 from dataclasses import dataclass,field
 from enum import Enum
+from typing import NewType
+import heapq
 
 class Side(Enum):
     BUY = "buy"
@@ -9,11 +11,14 @@ class OrderType(Enum):
     LIMIT = "limit"
     MARKET = "market"
 
+OrderId = NewType("OrderId" , int)
+Price = NewType("Price", int)
+
 @dataclass 
 class Order:
-    order_id: int
+    order_id: OrderId
     side: Side
-    price: int
+    price: Price
     qty: int
     order_type: OrderType = OrderType.LIMIT
     filled: int = 0
@@ -36,6 +41,7 @@ class Order:
     def remaining_value(self) -> int:
         return self.remaining() * self.price
 
+
     def __post_init__(self) -> None:
         if self.qty <= 0:
             raise ValueError("No Quantity")
@@ -45,3 +51,15 @@ class Order:
             raise ValueError("Limit orders must be positive")
         if self.filled != sum(self.fills):
             raise ValueError("Contradictory Fills")
+
+
+def cancel(book: dict[OrderId, Order], order_id:OrderId) -> None:
+    print(f"cancelling {order_id}")
+    book.pop(order_id, None)
+
+order = Order(OrderId(1), Side.BUY, Price(100), 10)
+book: dict[OrderId, Order] = {order.order_id: order}
+
+cancel(book, order.order_id)   # 1: correct
+cancel(book, order.price)      # 2: the bug
+cancel(book, 7)                # 3: bare int
