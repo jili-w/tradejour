@@ -39,3 +39,16 @@ class LinkedList:
 
     def __contains__(self, value: int) -> bool:
         return any(n== value for n in self)
+
+    def reverse(self) -> None:
+        prev = None
+        current = self.head
+        while current is not None:
+            nxt = current.next
+            current.next = prev
+            prev = current
+            current = nxt
+        self.head = prev
+
+
+
