@@ -1,4 +1,4 @@
-from models import Side, Order, OrderType
+from tradejour.models import Side, Order, OrderType
 import heapq
 
 ##1

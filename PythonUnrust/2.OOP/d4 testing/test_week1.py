@@ -1,4 +1,4 @@
-from week1 import *
+from tradejour.week1 import *
 
 import pytest
 import heapq

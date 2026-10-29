@@ -1,5 +1,5 @@
 import pytest
-from models import Order, Side, OrderId, OrderType, Price
+from tradejour.models import Order, Side, OrderId, OrderType, Price
 
 
 def test_new_order_status_unfilled() -> None:
